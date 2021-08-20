@@ -20,6 +20,3 @@ jobs:
           context: .
           push: true
           tags: jmdkaragoz/goapplication:latest
-
-
-
