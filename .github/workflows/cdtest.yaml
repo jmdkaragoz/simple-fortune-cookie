@@ -18,3 +18,7 @@ jobs:
         context: .
         push: true
         tags: jmdkaragoz/goapplication:latest
+    - name: Disabling buildkit
+      run: export DOCKER_BUILDKIT=0
+    - name: Compose docker
+      run: export COMPOSE_DOCKER_CLI_BUILD=0
