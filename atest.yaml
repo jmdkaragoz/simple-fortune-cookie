@@ -1,0 +1,24 @@
+name: workflow
+on: push
+env:
+  docker_username: ${{ secrets.DOCKER_USERNAME }}
+  docker_password: ${{ secrets.DOCKER_PASSWORD }}
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        docker_username: ${{ secrets.DOCKER_USERNAME }}
+        docker_password: ${{ secrets.DOCKER_PASSWORD }}
+      
+        name: Build push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: jmdkaragoz/goapplication:latest
+
+
+
