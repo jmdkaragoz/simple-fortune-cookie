@@ -1,21 +1,30 @@
-version: '3'
+version: '3.1'
 
 services:
     redis:
         image: redis
         container_name: redisserver
-        ports: 
+        ports:
             - "6379:6379"
         restart: always
-#        network_mode: host
+        #network_mode: host
+        volumes:
+            - ./redis.conf:/usr/local/etc/redis/redis.conf
+        networks:
+            - "network"
+        command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
     backend:
         #network_mode: host
+        ports: 
+            - "9000:9000"
         build:
             context: ./backend
             dockerfile: Dockerfile
         restart: always
         depends_on:
             - redis
+        networks:
+            - "network"
     frontend: 
         ports:
             - "8080:8080"
@@ -26,3 +35,11 @@ services:
         #network_mode: host
         depends_on:
             - backend
+        networks:
+            - "network"
+volumes:
+    myapp:
+        
+networks:
+      network:
+        driver: bridge

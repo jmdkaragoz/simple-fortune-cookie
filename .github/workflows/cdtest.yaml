@@ -12,3 +12,5 @@ jobs:
     - name: Docker compose start
       run: docker-compose build && docker-compose up
       timeout-minutes: 4
+    - name: Wget
+      run: wget -r localhost:8080
