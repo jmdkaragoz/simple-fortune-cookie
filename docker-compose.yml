@@ -4,11 +4,12 @@ services:
     redis:
         image: redis
         container_name: redisserver
-        ports: ["6379:6379"]
+        ports: 
+            - "6379:6379"
         restart: always
 #        network_mode: host
     backend:
-        network_mode: host
+        #network_mode: host
         build:
             context: ./backend
             dockerfile: Dockerfile
@@ -22,6 +23,6 @@ services:
             context: ./frontend
             dockerfile: Dockerfile
         restart: always
-        network_mode: host
+        #network_mode: host
         depends_on:
             - backend
