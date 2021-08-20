@@ -6,7 +6,7 @@ services:
         container_name: redisserver
         ports: ["6379:6379"]
         restart: always
-        network_mode: host
+#        network_mode: host
     backend:
         network_mode: host
         build:
