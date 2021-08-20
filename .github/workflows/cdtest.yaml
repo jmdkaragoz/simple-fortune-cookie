@@ -6,9 +6,9 @@ env:
 jobs:
   docker:
     runs-on: ubuntu-latest
-  steps:
-  - name: Git Checkout
-    uses: actions/checkout@v2
-  - name: Docker compose start
-    run: docker-compose build && docker-compose up
-    timeout-minutes: 4
+    steps:
+    - name: Git Checkout
+      uses: actions/checkout@v2
+    - name: Docker compose start
+      run: docker-compose build && docker-compose up
+      timeout-minutes: 4
