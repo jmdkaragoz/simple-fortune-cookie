@@ -6,7 +6,7 @@ env:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    steps:
+  steps:
   - name: Git Checkout
     uses: actions/checkout@v2
   - name: Docker compose start
